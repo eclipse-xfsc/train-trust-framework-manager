@@ -6,12 +6,29 @@ on:
   workflow_dispatch:
   
 jobs:
-  dockerbuild:
-    uses: eclipse-xfsc/dev-ops/.github/workflows/docker-maven.yml@main
-    with:
-      harbor_config: "deployment/harbor.config"
-  helm:
-    uses: eclipse-xfsc/dev-ops/.github/workflows/helm.yml@main
+  dockerbuild-nsd:
+    uses: eclipse-xfsc/dev-ops/.github/workflows/dockerbuild.yml@main
+    secrets: inherit
     with: 
-      buildContext:  "deployment/helm"
+      harbor_config: "deployment/harbor.config"
+      repo_name: tspa-service
+  helm-nsd:
+    uses: eclipse-xfsc/dev-ops/.github/workflows/helm.yml@main
+    secrets: inherit
+    with: 
+      buildContext:  "deployment/helm/tspa-service"
+      harbor_config: "deployment/harbor.config"
+  dockerbuild-ui:
+    uses: eclipse-xfsc/dev-ops/.github/workflows/dockerbuild.yml@main
+    secrets: inherit
+    with: 
+      dockerfile: ui/Dockerfile
+      buildContext: ui
+      harbor_config: "deployment/harbor.config"
+      repo_name: tspa-ui
+  helm-ui:
+    uses: eclipse-xfsc/dev-ops/.github/workflows/helm.yml@main
+    secrets: inherit
+    with: 
+      buildContext:  "deployment/helm/ui"
       harbor_config: "deployment/harbor.config"
