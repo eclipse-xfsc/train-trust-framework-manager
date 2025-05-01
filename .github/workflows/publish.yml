@@ -6,13 +6,13 @@ on:
   workflow_dispatch:
   
 jobs:
-  dockerbuild-nsd:
+  dockerbuild-tspa:
     uses: eclipse-xfsc/dev-ops/.github/workflows/dockerbuild.yml@main
     secrets: inherit
     with: 
       harbor_config: "deployment/harbor.config"
       repo_name: tspa-service
-  helm-nsd:
+  helm-tspa:
     uses: eclipse-xfsc/dev-ops/.github/workflows/helm.yml@main
     secrets: inherit
     with: 
