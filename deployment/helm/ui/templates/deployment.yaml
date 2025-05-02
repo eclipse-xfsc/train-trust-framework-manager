@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "tspa-ui-service.fullname" . }}
+  name: {{ include "tspa-ui.fullname" . }}
   labels:
-    {{- include "tspa-ui-service.labels" . | nindent 4 }}
+    {{- include "tspa-ui.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "tspa-ui-service.selectorLabels" . | nindent 6 }}
+      {{- include "tspa-ui.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "tspa-ui-service.selectorLabels" . | nindent 8 }}
+        {{- include "tspa-ui.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

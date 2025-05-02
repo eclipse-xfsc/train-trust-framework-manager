@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
  
-name: tspa-ui-service
+name: tspa-ui
 replicaCount: 1
  
 image:
@@ -14,7 +14,7 @@ image:
  
 #imagePullSecrets: []
 #nameOverride: ""
-fullnameOverride: "tspa-ui-service"
+fullnameOverride: "tspa-ui"
  
 podAnnotations: {}
  
