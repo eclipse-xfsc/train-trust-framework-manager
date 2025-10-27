@@ -42,7 +42,7 @@ jobs:
           npm ci --cache ../.npm --prefer-offline
           npm run build
       - name: Upload UI Build Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ui-dist
           path: ui/dist/
@@ -58,7 +58,7 @@ jobs:
           npm ci --cache ../.npm --prefer-offline
           npm run license:scan
       - name: Upload License Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: third-party-licenses
           path: ui/THIRD-PARTY.txt
